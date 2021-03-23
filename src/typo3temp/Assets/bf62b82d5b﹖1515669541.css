@@ -1,0 +1,13 @@
+h1 {
+  color: #d44e39;
+  }
+article h2 {
+  color: #d44e39;
+  }
+article ul li:before {
+  color: #d44e39;
+  }
+footer 
+  {
+    background-color: #d44e39;
+    }

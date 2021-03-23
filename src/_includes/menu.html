@@ -1,0 +1,82 @@
+
+
+
+
+           
+                    <nav>
+                        <ul>
+
+
+
+
+
+
+
+
+
+
+
+{% for item in site.data.menu.items %}
+{% assign itemPage = site.pages | find: "name", item.uid %}
+{% assign itemArray = itemPage.permalink | split: ',' %} 
+{% for subitem in item.submenu %}
+{% assign subitemPage = site.pages | find: "name", subitem.uid %}
+  {% assign itemArray = itemArray | push: subitemPage.permalink %}
+{% endfor %}
+
+<li{% if itemArray contains page.url %} style="list-style-image: url(fileadmin/templates/lauterbad/public/img/li_weiss.png);"{% endif %}><a href="{{  itemPage.permalink }}">{{ item.text }}</a>
+
+{% if item.submenu %}
+{% if itemArray contains {{page.url}} %}
+  <ul>
+    {% for subitem in item.submenu %}
+    {% assign itemPage = site.pages | find: "name", subitem.uid %}
+
+
+
+    {% assign hexstring = itemPage.settings.color | default: "#ef7b0b" | replace: "#", ""   %}
+
+    
+
+
+    <li style="list-style-image: url('data:image/svg+xml, %3Csvg width=%2714%27 height=%2710%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M3 1C1 2 0 8 1 9s13-3 13-5S5 0 3 1z%27 fill=%27%23{{ hexstring }}%27 fill-rule=%27evenodd%27/%3E%3C/svg%3E%0A');"
+
+
+
+
+    
+      ><a {% if itemPage.permalink == page.url %} style="font-weight: bold;color:#fff;"{% endif %}href="{{ itemPage.permalink }}">{{ subitem.text }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endif %}
+
+</li>
+{% endfor %}
+</ul>
+                    </nav>
+                
+
+
+
+<script>
+
+
+            var navbar = document.querySelector(".navbar")
+var ham = document.querySelector(".ham")
+
+function toggleHamburger(){
+  navbar.classList.toggle("showNav")
+  ham.classList.toggle("showClose")
+}
+
+ham.addEventListener("click", toggleHamburger)
+
+var menuLinks = document.querySelectorAll(".menuLink")
+menuLinks.forEach( 
+  function(menuLink) { 
+    menuLink.addEventListener("click", toggleHamburger) 
+  }
+)
+
+</script>

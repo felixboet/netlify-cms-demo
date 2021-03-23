@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{% for job in site.jobs %}
+{% if job.public %}
+
+  <h2>{{ job.slug }}</h2>
+  <p>{{ job.teaser | markdownify }}</p>
+  <div class="buttonHolder">
+    <a href="{{job.url}}" class="blockButton" style="background-color: #ef7b0b";">
+      weitere Informationen
+    </a>
+  </div>
+  {% endif %}
+  {% endfor %}

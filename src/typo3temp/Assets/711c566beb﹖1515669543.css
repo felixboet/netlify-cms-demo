@@ -1,0 +1,13 @@
+h1 {
+  color: #18a092;
+  }
+article h2 {
+  color: #18a092;
+  }
+article ul li:before {
+  color: #18a092;
+  }
+footer 
+  {
+    background-color: #18a092;
+    }

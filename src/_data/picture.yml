@@ -1,0 +1,5 @@
+presets:
+  default:
+    formats: [webp, original]
+    widths: [230, 480, 960]
+    link_source: false

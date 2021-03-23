@@ -1,0 +1,190 @@
+---
+
+---
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="utf-8">
+
+
+{% if page.collection == 'jobs' %}
+<title>Institut Lauterbad e.V. - Stellenangebot {{ page.slug }}</title>
+{% else %}
+<title>{{ page.title }}</title>
+{% endif %}
+
+
+<meta name="description" content="{{ page.metadesc }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="/style/css/main.css" media="all">
+<script src="/style/js/fonts.js" type="text/javascript"></script>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<style>
+  #content h1,#content h2,#content h3,#content h4,#content h5,#content h6,#footer-top-main { color:{{ page.settings.color | default: "#ef7b0b" }}; }
+  #footer-bar,#footer-bar-main,#footer-bar-inner { background-color:{{ page.settings.color | default: "#ef7b0b" }}; }
+</style>
+
+</head>
+<body>
+
+ <div id="outer-container">
+
+
+<header>
+  <a href="/"><img src="/assets/images/logo_pic_text.png" width="354" height="83"   alt="Logo des Institut Lauterbad e.V. Heilpädagogische Einrichtung für Seelenpflege-bedürtige Kinder und Jugendliche" ></a>
+
+
+  <div class="hamb">
+  <button class="ham"></button>
+  <nav class="navbar">
+    <ul>
+   
+
+
+{% for item in site.data.menu.items %}
+{% assign itemPage = site.pages | find: "name", item.uid %}
+{% assign itemArray = itemPage.permalink | split: ',' %} 
+{% for subitem in item.submenu %}
+{% assign subitemPage = site.pages | find: "name", subitem.uid %}
+  {% assign itemArray = itemArray | push: subitemPage.permalink %}
+{% endfor %}
+<li{% if itemArray contains page.url %} style="list-style-image: url(fileadmin/templates/lauterbad/public/img/li_weiss.png);"{% endif %}><a href="{{ itemPage.permalink }}">{{ item.text }}</a>
+
+
+{% if item.submenu %}
+
+  <ul>
+    {% for subitem in item.submenu %}
+    {% assign itemPage = site.pages | find: "name", subitem.uid %}
+      <li><a {% if itemPage.permalink == page.url %} style="font-weight: bold;color:#fff;"{% endif %}href="{{ itemPage.permalink }}">{{ subitem.text }}</a></li>
+    
+     
+    {% endfor %}
+  </ul>
+
+{% endif %}
+
+</li>
+{% endfor %}
+
+
+
+
+    </ul>
+  </nav>
+
+ </div>
+
+
+
+
+
+
+
+</header>
+
+ <div id="main-row">
+
+ <div id="navigation">
+ {% include menu.html %}
+ </div>
+
+<main>
+
+  {% if page.public == true %}
+
+
+<div id="content-container"> 
+
+{% if page.settings.imgTop %}
+<div id="clipped-image"> {% picture {{ page.settings.imgTop }} class="clipped-image" width="480" height="310" %}</div>
+<svg class="clipped-image-svg" height="50px" width="50px">
+            <defs>
+                <clipPath id="svgPath">
+                    <path fill="#FFFFFF" stroke="#000000" stroke-width="1.5794" stroke-miterlimit="10"  d="M0,101.95c14.01,78.38,419.75,227.14,468.35,206.01c40.46,-27.102,-31.655,-286.2,-106.65,-304.47c-70.49,-18.11,-359.699,37.16,-361.7,98.46z"/>
+                </clipPath>
+            </defs>
+        </svg>      
+                        
+{% endif %}
+
+<div id="content"> 
+
+  
+
+
+  {% include blocks.html %}
+
+
+
+
+  {{ content }}
+
+
+
+
+
+
+            
+</div>
+</div>
+
+<div id="pic_under">                   
+  <div class="pic">{% if page.settings.imgBottom1 %}{% picture {{page.settings.imgBottom1}} %}{% endif %}</div> 
+  <div class="pic">{% if page.settings.imgBottom2 %}{% picture {{page.settings.imgBottom2}} %}{% endif %}</div> 
+  <div class="pic">{% if page.settings.imgBottom3 %}{% picture {{page.settings.imgBottom3}} %}{% endif %}</div> 
+</div>
+   
+
+{% else %}
+
+<div id="content-container"> 
+
+  
+  <div id="content"> 
+  <h1>Nicht erreichbar</h1>
+<p>Diese Seite ist nicht veröffentlicht</p>
+</div></div>
+
+{% endif %}
+
+</main>
+
+
+</div>
+
+
+
+<footer>
+        <div id="footer-top"><div id="footer-top-inner"><div id="footer-top-menu"></div><div id="footer-top-main"><span>Leben</span> und <span>Lernen</span> in <span>Kassel</span></div></div></div>
+        <div id="footer-bar"><div id="footer-bar-inner"><div id="footer-bar-menu"> <nav>
+                <a class="divided footer-text-element" href="/">Home</a><a class="footer-text-element" href="/impressum">Impressum/Datenschutz</a>
+            </nav></div>
+           <div id="footer-bar-main">
+            <address>
+                    <span class="divided footer-text-element">Institut Lauterbad</span>
+                    <span class="divided footer-text-element">Ehlener Straße 27</span>
+                    <span class="divided footer-text-element">34131 Kassel</span>
+                    <span class="footer-text-element">Telefon: 0561 - 93 89 60</span>
+                    <span class="facebook"><a href="https://www.facebook.com/Institut-Lauterbad-eV-210416338994674" target="_blank">
+                        <img src="/assets/images/facebook.png" width="23" height="23"   alt="Zur Facebook-Seite vom Institut Lauterbad e. V." >
+                    </a></span>
+               
+            </address>
+        </div></div></div>
+</footer>
+
+  </div>
+
+
+</body>
+</html>
+
+

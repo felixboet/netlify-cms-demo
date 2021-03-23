@@ -1,0 +1,41 @@
+items:
+  - text: Über uns
+    uid: 5.md
+    submenu:
+      - text: Wohngruppen
+        uid: 10.md
+      - text: Waldorf-Förderschule
+        uid: 11.md
+      - text: Therapien
+        uid: 12.md
+      - text: Tiergestützte Pädagogik
+        uid: 13.md
+  - text: Aktuelles
+    uid: 26.md
+    submenu:
+      - text: Veranstaltungskalender
+        uid: 26.md
+      - text: Abhol- Ferienkalender
+        uid: 76.md
+  - text: Mitarbeiten
+    uid: 47.md
+    submenu:
+      - text: Stellenangebote
+        uid: 47.md
+      - text: Praktikant*innen
+        uid: 48.md
+      - text: FSJ und BFD
+        uid: 49.md
+  - text: Kinderaufnahme
+    uid: 8.md
+  - text: Kontakt / Service
+    uid: 43.md
+    submenu:
+      - text: Ansprechpartner
+        uid: 43.md
+      - text: Anfahrt
+        uid: 44.md
+      - text: Fördern und Spenden
+        uid: 46.md
+      - text: Kontaktformular
+        uid: 56.md

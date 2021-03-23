@@ -1,0 +1,160 @@
+export const superClassFields = [
+  {
+    label: "Height",
+    name: "height",
+    required: false,
+    widget: "string",
+    hint: "examples: 8rem, 50vh, 100%",
+  },
+  {
+    label: "Background Color",
+    name: "color",
+    required: false,
+    widget: "color",
+  },
+  {
+    label: "Background Items",
+    name: "items",
+    widget: "list",
+    types: [
+      {
+        label: "Gradient",
+        name: "gradient",
+        widget: "object",
+        summary: "Gradient",
+        fields: [
+          {
+            label: "Colors",
+            label_singular: "Color",
+            name: "colors",
+            widget: "list",
+            collapsed: false,
+            allow_add: true,
+            fields: [
+              {
+                label: "Color",
+                name: "color",
+                required: true,
+                widget: "color",
+              },
+              {
+                label: "Color Stop",
+                name: "position",
+                step: 5,
+                min: 0,
+                max: 100,
+                valueType: "float",
+                required: false,
+                widget: "number",
+              },
+            ],
+
+            default: [
+              {
+                color: "#000000",
+              },
+              {
+                color: "#ffffff",
+              },
+            ],
+          },
+          {
+            label: "Angle",
+            name: "angle",
+            required: false,
+            widget: "number",
+            valueType: "float",
+            step: 5,
+            default: 180,
+            hint: "in degree",
+          },
+        ],
+      },
+      {
+        label: "Image",
+        name: "image",
+        widget: "object",
+        summary: "{{fields.image}}",
+        fields: [
+          {
+            label: "Image",
+            widget: "image",
+            name: "image",
+          },
+          {
+            label: "Background Position",
+            name: "backgroundPosition",
+            widget: "select",
+            required: false,
+            multiple: false,
+            options: [
+              { label: "top left ", value: "left top" },
+              { label: "top center ", value: "center top" },
+              { label: "top right ", value: "right top" },
+              { label: "center left ", value: "left center" },
+              { label: "center", value: "center center" },
+              { label: "center right ", value: "right center" },
+              { label: "bottom left ", value: "left bottom" },
+              { label: "bottom center ", value: "center bottom" },
+              { label: "bottom right ", value: "right bottom" },
+            ],
+            default: "center center",
+          },
+          {
+            label: "Background Repeat",
+            name: "backgroundRepeat",
+            widget: "select",
+            required: false,
+            multiple: false,
+            options: [
+              { label: "repeat", value: "repeat" },
+              { label: "repeat-x", value: "repeat-x" },
+              { label: "repeat-y", value: "repeat-y" },
+              { label: "no-repeat", value: "no-repeat" },
+            ],
+            default: "no-repeat",
+          },
+          {
+            label: "Background Size",
+            name: "backgroundSize",
+            widget: "select",
+            required: false,
+            multiple: false,
+            options: [
+              { label: "auto", value: "auto" },
+              { label: "cover", value: "cover" },
+              { label: "contain", value: "contain" },
+            ],
+            default: "cover",
+          },
+          {
+            label: "Background Attachment",
+            name: "backgroundAttachment",
+            widget: "select",
+            required: false,
+            multiple: false,
+            options: [
+              { label: "scroll", value: "scroll" },
+              { label: "fixed", value: "fixed" },
+            ],
+            default: "scroll",
+          },
+        ],
+      },
+      {
+        label: "Image with Focal Point",
+        name: "focalImage",
+        widget: "object",
+        summary: "{{fields.image}}",
+        fields: [
+          {
+            label: "Image",
+            widget: "image",
+            required: false,
+            name: "image",
+          },
+        ],
+      },
+    ],
+  },
+];

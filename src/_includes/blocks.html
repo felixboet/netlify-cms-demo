@@ -1,0 +1,93 @@
+
+
+
+
+{% for block in page.blocks %}
+
+{% case block.type %}
+
+  {% when 'richText' %}
+  
+
+
+  <div class="richtext-container">
+    {% if block.images[0] %}
+    <div class="images-left">
+     
+ 
+    {% for image in block.images %}
+
+   
+      <img src="{{image.image}}" />
+
+  {% endfor %}
+</div>
+  {% endif %}
+   
+    <div class="text-right">
+      <div>
+      {{ block.markdown | markdownify }}</div>
+    </div>
+  </div>
+
+
+
+
+
+
+  {% when 'headingWithText' %}
+  <h2 style="color: {{block.color | default: ""}};">
+    {{block.heading}}
+  </h2>
+  {{ block.markdown | markdownify }}
+  {% when 'text' %}
+  <p>{{block.text}}</p>
+
+  {% when 'linkButton' %}
+  {% assign linkPage = site.pages | find: "name", block.uid %}
+  <div class="buttonHolder">
+    <a href="{{linkPage.permalink}}" class="blockButton" style="background-color: {{block.color | default:  "#ef7b0b"}};">
+      {{block.text}}
+    </a>
+  </div>
+
+  {% when 'fileButton' %}
+  
+
+  <div class="buttonHolder">
+    <a href="{{block.file}}" class="blockButton" style="background-color: {{block.color | default:  "#ef7b0b"}};">
+      {{block.text}}
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% when 'customHtml' %}
+  {{ block.code}}
+
+
+
+
+  {% when 'infobox' %}
+<div style="background-color: {{block.color | default: "#ef7b0b"}};">
+  {{ block.markdown | markdownify }}
+</div>
+
+{% endcase %}
+
+
+
+
+{% endfor %}
+
+

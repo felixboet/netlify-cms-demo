@@ -1,0 +1,50 @@
+timezone: Europe/Berlin
+
+destination: public
+source: src
+permalink: "/:title/"
+
+collections:
+  jobs:
+    output: true
+    sort_by: sortkey
+    permalink: "/mitarbeiten/stellenangebote/:title/"
+
+plugins:
+  - jekyll-feed
+  - jekyll_picture_tag
+  - jekyll-image-size
+
+exclude:
+  [
+    package-lock.json,
+    package.json,
+    node_modules,
+    vendor,
+    sourcefiles,
+    gemfile,
+    Gemfile.lock,
+  ]
+include: [".htaccess", "_pages", "_redirects"]
+
+sass:
+  sass_dir: _sass
+  #sourcemap: true
+  style: extended
+
+## set default layout for all pages
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+### uploads dir for cloudcannon
+uploads_dir: "assets"
+
+### jekyll_picture_tag settings
+picture:
+  output: "processed"
+  suppress_warnings: true
+  ignore_missing_images: true
+
